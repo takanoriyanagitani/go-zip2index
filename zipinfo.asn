@@ -1,0 +1,23 @@
+ZipInfo DEFINITIONS ::= BEGIN
+
+	UnixtimeUs ::= INTEGER
+
+	CompressionMethod ::= ENUMERATED {
+		unspecified (0),
+		store       (100),
+		deflate     (108)
+	}
+
+	BasicZipItemInfo ::= SEQUENCE {
+		name           UTF8String,
+		modified       UnixtimeUs,
+		offset         INTEGER,
+		compressedSize INTEGER,
+		originalSize   INTEGER,
+		checksum       INTEGER,
+		method         CompressionMethod
+	}
+
+	BasicZipIndexInfo ::= SEQUENCE OF BasicZipItemInfo
+
+END
